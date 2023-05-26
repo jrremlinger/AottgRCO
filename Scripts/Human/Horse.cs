@@ -1,8 +1,3 @@
-
-
-
-
-
 using Photon;
 using System;
 using UnityEngine;
@@ -14,7 +9,7 @@ public class Horse : Photon.MonoBehaviour
     public GameObject dust;
     public GameObject myHero;
     private Vector3 setPoint;
-    private float speed = 45f;
+    private float speed = 55;   //Was 45
     private string State = "idle";
     private float timeElapsed;
     private float _idleTime = 0f;
@@ -59,7 +54,7 @@ public class Horse : Photon.MonoBehaviour
         return Physics.Raycast(base.gameObject.transform.position + ((Vector3) (Vector3.up * 0.1f)), -Vector3.up, (float) 0.3f, mask3.value);
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         if ((this.myHero == null) && base.photonView.isMine)
         {
