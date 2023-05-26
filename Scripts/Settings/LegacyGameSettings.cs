@@ -33,6 +33,7 @@ namespace Settings
         public IntSetting TitanArmor = new IntSetting(1000, minValue: 0);
         public BoolSetting TitanExplodeEnabled = new BoolSetting(false);
         public IntSetting TitanExplodeRadius = new IntSetting(30, minValue: 0);
+        public BoolSetting PunkMohawksEnabled = new BoolSetting(true);
         public BoolSetting RockThrowEnabled = new BoolSetting(true);
 
         // pvp

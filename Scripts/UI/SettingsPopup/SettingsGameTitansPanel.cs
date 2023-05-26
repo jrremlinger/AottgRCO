@@ -45,6 +45,7 @@ namespace UI
             ElementFactory.CreateToggleSetting(DoublePanelRight, style, settings.TitanExplodeEnabled, "Titan explode");
             ElementFactory.CreateInputSetting(DoublePanelRight, style, settings.TitanExplodeRadius, "Explode radius", elementWidth: inputWidth);
             CreateHorizontalDivider(DoublePanelRight);
+            ElementFactory.CreateToggleSetting(DoublePanelRight, style, settings.PunkMohawksEnabled, "Punk mohawks");
             ElementFactory.CreateToggleSetting(DoublePanelRight, style, settings.RockThrowEnabled, "Punk rock throwing");
         }
     }

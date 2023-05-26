@@ -2780,7 +2780,14 @@ class TITAN : Photon.MonoBehaviour
             this.abnormalType = AbnormalType.TYPE_PUNK;
             base.name = "Punk";
             this.runAnimation = "run_abnormal_1";
-            base.GetComponent<TITAN_SETUP>().setHair2();
+            if ((SettingsManager.LegacyGameSettings.PunkMohawksEnabled.Value && IN_GAME_MAIN_CAMERA.gametype == GAMETYPE.MULTIPLAYER) || SettingsManager.LegacyGameSettingsUI.PunkMohawksEnabled.Value && IN_GAME_MAIN_CAMERA.gametype == GAMETYPE.SINGLE)
+            {
+                base.GetComponent<TITAN_SETUP>().setPunkHair();
+            }
+            else
+            {
+                base.GetComponent<TITAN_SETUP>().setHair2();
+            }
         }
         if (((this.abnormalType == AbnormalType.TYPE_I) || (this.abnormalType == AbnormalType.TYPE_JUMPER)) || (this.abnormalType == AbnormalType.TYPE_PUNK))
         {
