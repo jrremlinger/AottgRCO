@@ -354,6 +354,14 @@ class FengGameManagerMKII : Photon.MonoBehaviour
         {
             hashtable.Add("bombInfiniteGas", 0);
         }
+        if (settings.BombModeDisableTitans.Value)
+        {
+            hashtable.Add("bombDisableTitans", 1);
+        }
+        else
+        {
+            hashtable.Add("bombDisableTitans", 0);
+        }
         if (settings.GlobalHideNames.Value)
         {
             hashtable.Add("globalHideNames", 1);
@@ -389,6 +397,10 @@ class FengGameManagerMKII : Photon.MonoBehaviour
         if (settings.PointModeEnabled.Value)
         {
             hashtable.Add("point", settings.PointModeAmount.Value);
+        }
+        if (settings.PunkMohawksEnabled.Value)
+        {
+            hashtable.Add("punkMohawk", 1);
         }
         if (!settings.RockThrowEnabled.Value) // reversed for legacy compatibility
         {
@@ -5194,6 +5206,10 @@ class FengGameManagerMKII : Photon.MonoBehaviour
 
     private void OnLevelWasLoaded(int level)
     {
+        if (SettingsManager.LegacyGameSettings.BombModeEnabled.Value && SettingsManager.LegacyGameSettings.BombModeCeiling.Value)
+        {
+            MapCeiling.CreateMapCeiling();
+        }
         SkyboxCustomSkinLoader.SkyboxMaterial = null;
         if ((level != 0) && ((Application.loadedLevelName != "characterCreation") && (Application.loadedLevelName != "SnapShot")))
         {
@@ -5527,6 +5543,14 @@ class FengGameManagerMKII : Photon.MonoBehaviour
                 {
                     hashtable.Add("bombInfiniteGas", 0);
                 }
+                if (SettingsManager.LegacyGameSettings.BombModeDisableTitans.Value)
+                {
+                    hashtable.Add("bombDisableTitans", 1);
+                }
+                else
+                {
+                    hashtable.Add("bombDisableTitans", 0);
+                }
                 if (SettingsManager.LegacyGameSettings.GlobalHideNames.Value)
                 {
                     hashtable.Add("globalHideNames", 1);
@@ -5542,6 +5566,10 @@ class FengGameManagerMKII : Photon.MonoBehaviour
                 if (SettingsManager.LegacyGameSettings.PointModeEnabled.Value)
                 {
                     hashtable.Add("point", SettingsManager.LegacyGameSettings.PointModeAmount.Value);
+                }
+                if (SettingsManager.LegacyGameSettings.PunkMohawksEnabled.Value)
+                {
+                    hashtable.Add("punkMohawk", 1);
                 }
                 if (!SettingsManager.LegacyGameSettings.RockThrowEnabled.Value)
                 {
@@ -7461,7 +7489,11 @@ class FengGameManagerMKII : Photon.MonoBehaviour
         }
         if (settings.BombModeEnabled.Value && (!hash.ContainsKey("bombCeiling") || (int)hash["bombCeiling"] == 1))
         {
-            MapCeiling.CreateMapCeiling();
+            settings.BombModeCeiling.Value = true;
+        }
+        else
+        {
+            settings.BombModeCeiling.Value = false;
         }
         if (!hash.ContainsKey("bombInfiniteGas") || (int)hash["bombInfiniteGas"] == 1)
         {
@@ -7470,6 +7502,14 @@ class FengGameManagerMKII : Photon.MonoBehaviour
         else
         {
             settings.BombModeInfiniteGas.Value = false;
+        }
+        if (!hash.ContainsKey("bombDisableTitans") || (int)hash["bombDisableTitans"] == 1)
+        {
+            settings.BombModeDisableTitans.Value = true;
+        }
+        else
+        {
+            settings.BombModeDisableTitans.Value = false;
         }
         settings.GlobalHideNames.Value = hash.ContainsKey("globalHideNames");
         if (hash.ContainsKey("globalDisableMinimap"))
@@ -7585,6 +7625,17 @@ class FengGameManagerMKII : Photon.MonoBehaviour
         {
             settings.PointModeEnabled.Value = false;
             this.chatRoom.addLINE("<color=#FFCC00>Point limit disabled.</color>");
+        }
+        if (hash.ContainsKey("punkMohawk"))
+        { 
+            if (!settings.PunkMohawksEnabled.Value)
+            {
+                settings.PunkMohawksEnabled.Value = true;
+            }
+        }
+        else if (settings.PunkMohawksEnabled.Value)
+        {
+            settings.PunkMohawksEnabled.Value = false;
         }
         if (hash.ContainsKey("rock"))
         {
