@@ -19,6 +19,7 @@ namespace Settings
         public MultiplayerServerType CurrentMultiplayerServerType;
         public readonly Dictionary<MultiplayerRegion, string> CloudAddresses = new Dictionary<MultiplayerRegion, string>()
         {
+            { MultiplayerRegion.DEV, "app-us.exitgamescloud.com" },
             { MultiplayerRegion.EU, "app-eu.exitgamescloud.com" },
             { MultiplayerRegion.US, "app-us.exitgamescloud.com" },
             { MultiplayerRegion.SA, "app-sa.exitgames.com" },
@@ -26,6 +27,7 @@ namespace Settings
         };
         public readonly Dictionary<MultiplayerRegion, string> PublicAddresses = new Dictionary<MultiplayerRegion, string>()
         {
+            { MultiplayerRegion.DEV, "71.57.228.230" },
             { MultiplayerRegion.EU, "135.125.239.180" },
             { MultiplayerRegion.US, "142.44.242.29" },
             { MultiplayerRegion.SA, "172.107.193.233" },
@@ -93,6 +95,7 @@ namespace Settings
 
     public enum MultiplayerRegion
     {
+        DEV,
         EU,
         US,
         SA,

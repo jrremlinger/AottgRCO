@@ -4129,8 +4129,8 @@ class HERO : Photon.MonoBehaviour
                 this.myHorse = Instantiate(Resources.Load("horse"), baseTransform.position + Vector3.up * 5f, baseTransform.rotation) as GameObject;
             }
             else
-        {
-            this.myHorse = PhotonNetwork.Instantiate("horse", this.baseTransform.position + ((Vector3) (Vector3.up * 5f)), this.baseTransform.rotation, 0);
+            {
+                this.myHorse = PhotonNetwork.Instantiate("horse", this.baseTransform.position + ((Vector3) (Vector3.up * 5f)), this.baseTransform.rotation, 0);
             }
             this.myHorse.GetComponent<Horse>().myHero = base.gameObject;
             this.myHorse.GetComponent<TITAN_CONTROLLER>().isHorse = true;

@@ -17,7 +17,7 @@
         public KeybindSetting Reload = new KeybindSetting(new string[] { "R", "None" });
         public KeybindSetting HorseMount = new KeybindSetting(new string[] { "LeftControl", "None" });
         public KeybindSetting HorseWalk = new KeybindSetting(new string[] { "LeftShift", "None" });
-        public KeybindSetting HorseJump = new KeybindSetting(new string[] { "Q", "None" });
+        public KeybindSetting HorseJump = new KeybindSetting(new string[] { "Mouse0", "None" });
         public KeybindSetting Flare1 = new KeybindSetting(new string[] { "Alpha1", "None" });
         public KeybindSetting Flare2 = new KeybindSetting(new string[] { "Alpha2", "None" });
         public KeybindSetting Flare3 = new KeybindSetting(new string[] { "Alpha3", "None" });

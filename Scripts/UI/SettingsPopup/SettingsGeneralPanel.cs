@@ -31,6 +31,7 @@ namespace UI
             ElementFactory.CreateToggleSetting(DoublePanelRight, style, settings.SnapshotsShowInGame, UIManager.GetLocale(cat, sub, "SnapshotsShowInGame"));
             ElementFactory.CreateInputSetting(DoublePanelRight, style, settings.SnapshotsMinimumDamage, UIManager.GetLocale(cat, sub, "SnapshotsMinimumDamage"),
                 elementWidth: 100f);
+            ElementFactory.CreateToggleSetting(DoublePanelRight, style, settings.ReplaceServerUS, "Private US server", tooltip: "Replaces US server with private RCO modded server.");
         }
     }
 }

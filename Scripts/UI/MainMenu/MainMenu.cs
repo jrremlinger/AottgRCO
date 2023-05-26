@@ -89,9 +89,9 @@ namespace UI
             ElementFactory.SetAnchor(versionText.gameObject, TextAnchor.LowerCenter, TextAnchor.LowerCenter, new Vector2(0f, 20f));
             versionText.color = Color.white;
             if (ApplicationConfig.DevelopmentMode)
-                versionText.text = "RC MOD DEVELOPMENT VERSION";
+                versionText.text = "RCO MOD DEVELOPMENT VERSION";
             else
-                versionText.text = "RC Mod Version " + ApplicationConfig.GameVersion + ".";
+                versionText.text = "RCO Mod Version " + ApplicationConfig.GameVersion + ".";
         }
 
         private void Update()

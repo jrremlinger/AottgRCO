@@ -16,6 +16,7 @@ namespace Settings
         public BoolSetting SnapshotsShowInGame = new BoolSetting(false);
         public IntSetting SnapshotsMinimumDamage = new IntSetting(0, minValue: 0);
         public BoolSetting MinimapEnabled = new BoolSetting(false);
+        public BoolSetting ReplaceServerUS = new BoolSetting(true);
 
         public override void Apply()
         {

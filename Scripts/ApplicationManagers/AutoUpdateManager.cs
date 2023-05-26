@@ -19,7 +19,7 @@ namespace ApplicationManagers
         // consts
         static readonly string RootDataPath = Application.dataPath;
         static readonly string Platform = File.ReadAllText(RootDataPath + "/PlatformInfo");
-        static readonly string RootUpdateURL = "http://aottgrc.com/Patch";
+        static readonly string RootUpdateURL = "http://71.57.228.230:25575/";
         static readonly string LauncherVersionURL = RootUpdateURL + "/LauncherVersion.txt";
         public static readonly string PlatformUpdateURL = RootUpdateURL + "/" + Platform;
         static readonly string ChecksumURL = PlatformUpdateURL + "/Checksum.txt";

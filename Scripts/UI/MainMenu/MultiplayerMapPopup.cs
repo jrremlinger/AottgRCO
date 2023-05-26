@@ -73,7 +73,7 @@ namespace UI
                     _lanPopup.Show();
                     break;
                 case "ButtonUS":
-                    settings.ConnectServer(MultiplayerRegion.US);
+                    settings.ConnectServer(SettingsManager.GeneralSettings.ReplaceServerUS.Value ? MultiplayerRegion.DEV : MultiplayerRegion.US);
                     break;
                 case "ButtonSA":
                     settings.ConnectServer(MultiplayerRegion.SA);
