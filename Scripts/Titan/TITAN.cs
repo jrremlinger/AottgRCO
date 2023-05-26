@@ -3136,7 +3136,7 @@ class TITAN : Photon.MonoBehaviour
     public void setAbnormalType2(AbnormalType type, bool forceCrawler)
     {
         bool flag = false;
-        if (SettingsManager.LegacyGameSettings.TitanSpawnEnabled.Value)
+        if (SettingsManager.LegacyGameSettings.TitanSpawnEnabled.Value || (IN_GAME_MAIN_CAMERA.gametype == GAMETYPE.SINGLE && SettingsManager.LegacyGameSettingsUI.TitanSpawnEnabled.Value))
         {
             flag = true;
         }
@@ -3537,6 +3537,12 @@ class TITAN : Photon.MonoBehaviour
                 {
                     float sizeLower = SettingsManager.LegacyGameSettings.TitanSizeMin.Value;
                     float sizeUpper = SettingsManager.LegacyGameSettings.TitanSizeMax.Value;
+                    this.myLevel = UnityEngine.Random.Range(sizeLower, sizeUpper);
+                }
+                if (IN_GAME_MAIN_CAMERA.gametype == GAMETYPE.SINGLE && SettingsManager.LegacyGameSettingsUI.TitanSizeEnabled.Value)
+                {
+                    float sizeLower = SettingsManager.LegacyGameSettingsUI.TitanSizeMin.Value;
+                    float sizeUpper = SettingsManager.LegacyGameSettingsUI.TitanSizeMax.Value;
                     this.myLevel = UnityEngine.Random.Range(sizeLower, sizeUpper);
                 }
                 this.hasSetLevel = true;

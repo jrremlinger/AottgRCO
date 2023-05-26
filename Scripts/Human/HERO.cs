@@ -4122,9 +4122,16 @@ class HERO : Photon.MonoBehaviour
     private void Start()
     {
         FengGameManagerMKII.instance.addHero(this);
-        if (((LevelInfo.getInfo(FengGameManagerMKII.level).horse || (SettingsManager.LegacyGameSettings.AllowHorses.Value)) && (IN_GAME_MAIN_CAMERA.gametype == GAMETYPE.MULTIPLAYER)) && base.photonView.isMine)
+        if (((LevelInfo.getInfo(FengGameManagerMKII.level).horse || SettingsManager.LegacyGameSettings.AllowHorses.Value) && IN_GAME_MAIN_CAMERA.gametype == GAMETYPE.MULTIPLAYER && base.photonView.isMine) || (SettingsManager.LegacyGameSettingsUI.AllowHorses.Value && IN_GAME_MAIN_CAMERA.gametype == GAMETYPE.SINGLE))
+        {
+            if (IN_GAME_MAIN_CAMERA.gametype == GAMETYPE.SINGLE)
+            {
+                this.myHorse = Instantiate(Resources.Load("horse"), baseTransform.position + Vector3.up * 5f, baseTransform.rotation) as GameObject;
+            }
+            else
         {
             this.myHorse = PhotonNetwork.Instantiate("horse", this.baseTransform.position + ((Vector3) (Vector3.up * 5f)), this.baseTransform.rotation, 0);
+            }
             this.myHorse.GetComponent<Horse>().myHero = base.gameObject;
             this.myHorse.GetComponent<TITAN_CONTROLLER>().isHorse = true;
         }

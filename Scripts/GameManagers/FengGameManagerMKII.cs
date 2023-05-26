@@ -8763,13 +8763,21 @@ class FengGameManagerMKII : Photon.MonoBehaviour
             }
         }
         moreTitans = Math.Min(100, moreTitans);
-        if (SettingsManager.LegacyGameSettings.TitanSpawnEnabled.Value)
+        if (SettingsManager.LegacyGameSettings.TitanSpawnEnabled.Value || (IN_GAME_MAIN_CAMERA.gametype == GAMETYPE.SINGLE && SettingsManager.LegacyGameSettingsUI.TitanSpawnEnabled.Value))
         {
             float nRate = SettingsManager.LegacyGameSettings.TitanSpawnNormal.Value;
             float aRate = SettingsManager.LegacyGameSettings.TitanSpawnAberrant.Value;
             float jRate = SettingsManager.LegacyGameSettings.TitanSpawnJumper.Value;
             float cRate = SettingsManager.LegacyGameSettings.TitanSpawnCrawler.Value;
             float pRate = SettingsManager.LegacyGameSettings.TitanSpawnPunk.Value;
+            if (IN_GAME_MAIN_CAMERA.gametype == GAMETYPE.SINGLE)
+            {
+                nRate = SettingsManager.LegacyGameSettingsUI.TitanSpawnNormal.Value;
+                aRate = SettingsManager.LegacyGameSettingsUI.TitanSpawnAberrant.Value;
+                jRate = SettingsManager.LegacyGameSettingsUI.TitanSpawnJumper.Value;
+                cRate = SettingsManager.LegacyGameSettingsUI.TitanSpawnCrawler.Value;
+                pRate = SettingsManager.LegacyGameSettingsUI.TitanSpawnPunk.Value;
+            }
             if (punk)
             {
                 nRate = 0f;
